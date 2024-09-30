@@ -11,9 +11,27 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 let map, mapEvent;
-///Geo location API
-navigator.geolocation.getCurrentPosition(
-  function (position) {
+
+/// refactoring
+class App {
+  constructor() {
+    //1
+    this._getPosition();
+  }
+  _getPosition() {
+    ///Geo location API
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        this._getLoadMap.bind(this),
+        function () {
+          //if in case of failure
+          console.log('fail to fetch');
+        }
+      );
+    }
+  }
+
+  _getLoadMap(position) {
     //In case of sucess
     const { longitude } = position.coords;
     const { latitude } = position.coords;
@@ -39,19 +57,17 @@ navigator.geolocation.getCurrentPosition(
         inputDuration.value =
           '';
     });
-  },
-  function () {
-    //if in case of failure
-    console.log('fail to fetch');
   }
-);
+  _getShowForm() {}
+  _getTogelElivstionField() {}
+}
 
 //Handling from  on map
 form.addEventListener('submit', function (e) {
   e.preventDefault();
   //   e.preventDefault;
 
-  console.log('form sttable');
+  // console.log('form sttable');
   const { lat, lng } = mapEvent.latlng;
   //   console.log(lat, lng);
   //   ADDING MARKER WHEN USER CLICK
