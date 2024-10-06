@@ -1,5 +1,5 @@
 'use strict';
-
+const btn = document.querySelector('.btn-reset');
 const form = document.querySelector('.form');
 const containerWorkouts = document.querySelector('.workouts');
 const inputType = document.querySelector('.form__input--type');
@@ -68,10 +68,12 @@ class Cycling extends Workout {
 class App {
   #map;
   #mapEvent;
-  #workOut = [];
+  #workOut = []; //Array that consist of all workouts
   constructor() {
-    //1
+    //get position
     this._getPosition();
+    this._getLocalStorage();
+
     form.addEventListener('submit', this._newWorkOut.bind(this));
     inputType.addEventListener(
       'change',
@@ -110,6 +112,9 @@ class App {
     this.#map.on('click', this._getShowForm.bind(this));
 
     // -----------------------------------------------||
+    this.#workOut.forEach(work => {
+      this._randerWorkoutMarker(work);
+    });
   }
   _getShowForm(e) {
     // e.preventDefault();
@@ -188,6 +193,9 @@ class App {
     this._randerWorkoutMarker(workout);
     //hide form + clear input field
     this._hideform();
+
+    //local storage
+    this._localStorage();
 
     ///////////////////////////
   }
@@ -269,9 +277,25 @@ class App {
       },
     });
     //using the public interface
-    workout.click();
+    // workout.click();
     // console.log(this.#clicks);
-    console.log(workout);
+    // console.log(workout);
+  }
+  _localStorage() {
+    localStorage.setItem('workout', JSON.stringify(this.#workOut));
+  }
+  _getLocalStorage() {
+    let data = JSON.parse(localStorage.getItem('workout'));
+    if (!data) return;
+    this.#workOut = data;
+    this.#workOut.forEach(work => {
+      this._randerWorkout(work);
+    });
+  }
+  rest() {
+    localStorage.removeItem('workout');
+    location.reload();
   }
 }
 const app = new App();
+btn.addEventListener('click', app.rest);

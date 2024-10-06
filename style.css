@@ -218,3 +218,41 @@ a:visited {
 .cycling-popup .leaflet-popup-content-wrapper {
   border-left: 5px solid var(--color-brand--1);
 }
+#map {
+  flex: 1;
+  height: 100%;
+  background-color: var(--color-light--1);
+  position: relative; /* Ensure map has a position property for proper stacking */
+  z-index: 1; /* Lower than the button */
+}
+
+.btn-reset {
+  position: absolute;
+  top: 56px;
+  right: 54px;
+  z-index: 100; /* Set this higher than the map */
+
+  /* Design properties */
+  padding: 0.8rem 1.2rem;
+  background-color: var(--color-dark--1); /* Use the dark color */
+  color: var(--color-light--2); /* Light text color */
+  font-size: 1.6rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.btn-reset:hover {
+  background-color: var(--color-dark--2); /* Darken on hover */
+  color: var(--color-light--1); /* Slightly change text color on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Active effect (when clicked) */
+.btn-reset:active {
+  transform: scale(0.95); /* Slightly shrink on click */
+}
