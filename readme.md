@@ -10,7 +10,7 @@
 6. [How to Use](#how-to-use)
 7. [Future Improvements](#future-improvements)
 8. [Live Demo](#live-demo)
-9. [License](#license)
+
 
 ## Introduction
 
