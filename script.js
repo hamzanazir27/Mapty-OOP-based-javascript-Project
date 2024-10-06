@@ -51,7 +51,6 @@ form.addEventListener('submit', function (e) {
   e.preventDefault();
   //   e.preventDefault;
 
-  console.log('form sttable');
   const { lat, lng } = mapEvent.latlng;
   //   console.log(lat, lng);
   //   ADDING MARKER WHEN USER CLICK
