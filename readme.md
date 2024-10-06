@@ -9,7 +9,8 @@
 5. [Code Structure](#code-structure)
 6. [How to Use](#how-to-use)
 7. [Future Improvements](#future-improvements)
-8. [License](#license)
+8. [Live Demo](#live-demo)
+9. [License](#license)
 
 ## Introduction
 
@@ -71,3 +72,7 @@ The project follows an OOP structure with the following classes:
 - Enhance the UI/UX for better user experience.
 - Integrate additional workout types (e.g., walking, swimming).
 - Provide visual analytics on workout performance over time.
+
+## Live Demo
+
+You can view the live demo of the project at the following link: [Mapty OOP Based JavaScript Project](https://mapty-oop-based-javascript-project.vercel.app/)
